@@ -1,0 +1,32 @@
+table {
+  width: 100%;                   
+  border-collapse: collapse;       
+  margin-top: 20px;                
+  font-size: 14px;                 
+}
+
+/* テーブルセルのデザイン */
+th, td {
+  border: 1px solid #ccc;      /* セルの境界線を薄いグレーにする */ 
+  padding: 12px;                   
+}
+
+/* テーブルヘッダーのデザイン */
+th {
+  background-color: #9d9b9b;      /* ヘッダーの背景を薄いグレーにする */
+  font-weight: bold;               
+  text-align: center; 
+}
+
+/* 各列の横幅を指定 */
+.table_news .title {
+  width: 30%;
+}
+
+.table_news .datetime {
+  width: 10%;
+}
+
+.table_news .body {
+  width: 60%;
+}

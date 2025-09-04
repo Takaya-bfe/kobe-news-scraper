@@ -1,0 +1,13 @@
+<h1>スクレイピング結果</h1>
+
+<article>
+  <h2><%= @title %></h2>
+  <p><strong>日時:</strong> <%= @datetime %></p>
+  <hr>
+  <div>
+    <%= simple_format(@body) %>
+  </div>
+</article>
+
+<hr>
+<%= link_to 'もう一度試す', root_path %>
