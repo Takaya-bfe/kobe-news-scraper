@@ -6,7 +6,7 @@ class ScraperController < ApplicationController
   # CSRF保護の無効化（URL入力による422errorの対応のため実装）
   skip_before_action :verify_authenticity_token, only: [ :scrape ]
   def index
-    @articles = Article.all.order(created_at: :desc)
+    @articles = Article.where(session_id: session.id.to_s).order(created_at: :desc)
   end
 
   def scrape
@@ -28,7 +28,8 @@ class ScraperController < ApplicationController
       url: url,
       title: title,
       published_at: Time.parse(datetime), # 文字列をTimeオブジェクトに変換
-      body: body
+      body: body,
+      session_id: session.id.to_s
     )
 
     redirect_to root_path
