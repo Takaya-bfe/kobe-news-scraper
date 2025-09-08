@@ -78,21 +78,13 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
 production:
-  primary: &primary_production
-    <<: *default
-    database: nhk_news_scraper_production
-    username: nhk_news_scraper
-    password: <%= ENV["NHK_NEWS_SCRAPER_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: nhk_news_scraper_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: nhk_news_scraper_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: nhk_news_scraper_production_cable
-    migrations_paths: db/cable_migrate
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= Rails.application.credentials.aws.rds.hostname %>
+  username: <%= Rails.application.credentials.aws.rds.username %>
+  password: <%= Rails.application.credentials.aws.rds.password %>
+  database: <%= Rails.application.credentials.aws.rds.database %>
+
