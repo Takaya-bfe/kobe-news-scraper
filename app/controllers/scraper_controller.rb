@@ -3,6 +3,8 @@ require "nokogiri"
 
 
 class ScraperController < ApplicationController
+  # CSRF保護の無効化（URL入力による422errorの対応のため実装）
+  skip_before_action :verify_authenticity_token, only: [ :scrape ]
   def index
     @articles = Article.all.order(created_at: :desc)
   end
