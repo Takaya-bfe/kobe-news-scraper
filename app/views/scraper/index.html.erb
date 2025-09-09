@@ -1,6 +1,6 @@
 <h1>スクレイピングアプリケーション</h1>
 
-<%= form_with url: "/scrape", method: :post, data: { turbo: false } do |form| %>
+<%= form_with url: "/scrape", method: :post do |form| %>
   <div>
     <%= form.label :article_url, "記事のURL" %>
     <%= form.text_field :article_url, required: true, placeholder: "スクレイピングするURLを入力" %>
@@ -22,13 +22,7 @@
       <th class = "body">本文</th>
     </tr>
   </thead>
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.published_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
-        <td><%= article.body%></td>
-      </tr>
-    <% end %>
+  <tbody id ="articles-list">
+    <%= render @articles %>
   </tbody>
 </table>
