@@ -25,15 +25,21 @@ class ScraperController < ApplicationController
     datetime = doc.at_css("p.content--date time")["datetime"]
     body = doc.css("div.content--detail-body").text.strip
 
+    analyzer = OpenaiAnalyzer.new(title, body)
+    analysis_result = analyzer.analyze
+
     @article = Article.new(
       url: url,
       title: title,
       published_at: Time.parse(datetime),
       body: body,
-      session_id: session.id.to_s
+      session_id: session.id.to_s,
+      risk_score: analysis_result[:risk_score],
+      summary: analysis_result[:summary]
     )
     @article.save
 
+    # 画面をリアルタイムに更新
     respond_to do |format|
       format.turbo_stream
     end

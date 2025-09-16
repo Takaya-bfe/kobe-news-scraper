@@ -23,10 +23,13 @@ th {
   width: 30%;
 }
 
-.table_news .datetime {
+.table_news .score {
   width: 10%;
 }
 
+.table_news .summary {
+  width: 25%;
+}
 .table_news .body {
-  width: 60%;
+  width: 35%;
 }
