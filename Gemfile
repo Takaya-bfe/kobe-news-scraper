@@ -62,3 +62,5 @@ end
 gem "nokogiri"
 
 gem "ruby-openai"
+
+gem "aws-sdk-lambda"
