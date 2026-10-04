@@ -83,8 +83,8 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= Rails.application.credentials.aws.rds.hostname %>
-  username: <%= Rails.application.credentials.aws.rds.username %>
-  password: <%= Rails.application.credentials.aws.rds.password %>
-  database: <%= Rails.application.credentials.aws.rds.database %>
+  host: <%= Rails.application.credentials.dig(:aws, :rds, :hostname) %>
+  username: <%= Rails.application.credentials.dig(:aws, :rds, :username) %>
+  password: <%= Rails.application.credentials.dig(:aws, :rds, :password) %>
+  database: <%= Rails.application.credentials.dig(:aws, :rds, :database) %>
 
