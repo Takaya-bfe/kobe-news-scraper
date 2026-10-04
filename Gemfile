@@ -60,3 +60,7 @@ group :test do
 end
 
 gem "nokogiri"
+
+gem "ruby-openai"
+
+gem "aws-sdk-lambda"
